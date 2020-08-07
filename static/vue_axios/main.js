@@ -13,18 +13,21 @@ function sendRequest(url, method, data) {
     return r
 }
 
+
 // Vue Connection
-let app = new Vue({
-    el: '#app',
+const App = Vue.createApp({
     delimiters: ['[[', ']]'],
-    data: {
-        returned_task: '',
-        new_task: '',
-        create_modify: '',
-        modify_id: -1,
-        modify_index: -1,
-        tasks: []
+    data() {
+        return {
+            returned_task: '',
+            new_task: '',
+            create_modify: '',
+            modify_id: -1,
+            modify_index: -1,
+            tasks: []
+        }
     },
+
     created() {
         let vm = this
         let r = sendRequest('', 'GET')
@@ -32,6 +35,7 @@ let app = new Vue({
                 vm.tasks = response.data.tasks;
             })
     },
+
     methods: {
         create_modify_func() {
             let vm = this
@@ -70,7 +74,6 @@ let app = new Vue({
                 vm.create_modify = 'create'
                 vm.new_task = ''
             }
-            console.log(vm.create_modify)
             $('#new_task_modal').modal('show') //code from bootstrap to close the modal.
         },
 
@@ -82,4 +85,6 @@ let app = new Vue({
                 })
         }
     }
-});
+})
+
+App.mount('#app')
