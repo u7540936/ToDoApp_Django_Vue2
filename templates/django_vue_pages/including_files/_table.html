@@ -1,0 +1,28 @@
+{% load icon %}
+<div class="mt-3">
+    <table class="table text-center" id="TaskTable">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Task</th>
+            <th scope="col">Created On</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="(task, index) in tasks">
+            <th scope="row">[[task.id]]</th>
+            <td :class="{'completed': task.Completed}">[[task.Task]]</td>
+            <td :class="{'completed': task.Completed}">[[task.CreatedOn]]</td>
+            <td>
+                <span @click.stop="openModal(index, 'modify')">
+                    {% icon "edit" class="css_icon_edit close" %}
+                </span>
+                <span @click.stop="deleteTask(task.id, index)">
+                      {% icon "trash-2" class="css_icon_delete close" %}
+                </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

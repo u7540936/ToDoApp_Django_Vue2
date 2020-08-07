@@ -1,0 +1,3 @@
+.button.default, input[type=submit].default, .submit-row input.default {
+    background: green;
+}
