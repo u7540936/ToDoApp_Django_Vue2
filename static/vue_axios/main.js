@@ -24,16 +24,16 @@ const App = Vue.createApp({
             create_modify: '',
             modify_id: -1,
             modify_index: -1,
-            tasks: []
+            tasks: testData
         }
     },
 
     created() {
-        let vm = this
-        let r = sendRequest('', 'GET')
-            .then(function (response) {
-                vm.tasks = response.data.tasks;
-            })
+        // let vm = this
+        // let r = sendRequest('', 'GET')
+        //     .then(function (response) {
+        //         vm.tasks = response.data.tasks;
+        //     })
     },
 
     methods: {
@@ -78,6 +78,7 @@ const App = Vue.createApp({
         },
 
         deleteTask(id, index) {
+            console.log(id, index)
             let vm = this
             let r = sendRequest(id + '/delete/', 'POST')
                 .then(function (response) {

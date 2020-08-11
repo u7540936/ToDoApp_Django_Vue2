@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
+import json
 
 from datetime import datetime
 
@@ -12,13 +13,16 @@ from django.forms.models import model_to_dict
 
 def main(request):
     if request.method == 'GET':
-        if request.is_ajax():
-            tasks = list(TodoList.objects.values('id', 'Task', 'CreatedOn', 'Completed', 'Deleted'))
-            for i in range(0, len(tasks)):
-                tasks[i]['CreatedOn'] = tasks[i]['CreatedOn'].strftime('%m.%d.%Y')
-            return JsonResponse({'tasks': tasks}, status=200)
+        # if request.is_ajax():
+        tasks = list(TodoList.objects.values('id', 'Task', 'CreatedOn', 'Completed', 'Deleted'))
+        # tasks = TodoList.objects.values('id', 'Task', 'CreatedOn', 'Completed', 'Deleted')
+        for i in range(0, len(tasks)):
+            tasks[i]['CreatedOn'] = tasks[i]['CreatedOn'].strftime('%m.%d.%Y')
+        # return JsonResponse({'tasks': tasks}, status=200)
 
-        return render(request, 'django_vue_pages/index.html')
+        return render(request, 'django_vue_pages/index.html', {'tasks': json.dumps(tasks)})
+
+        # return render(request, 'django_vue_pages/index.html')
 
     if request.method == 'POST':
         add_info = request.POST.copy()

@@ -10,6 +10,7 @@
         </tr>
         </thead>
         <tbody>
+
         <tr v-for="(task, index) in tasks">
             <th scope="row">[[task.id]]</th>
             <td :class="{'completed': task.Completed}">[[task.Task]]</td>
@@ -23,6 +24,7 @@
                 </span>
             </td>
         </tr>
+
         </tbody>
     </table>
 </div>
