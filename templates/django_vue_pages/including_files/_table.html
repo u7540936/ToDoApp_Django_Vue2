@@ -6,6 +6,7 @@
             <th scope="col">#</th>
             <th scope="col">Task</th>
             <th scope="col">Created On</th>
+            <th scope="col">Tags</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
@@ -14,6 +15,7 @@
             <th scope="row">[[task.id]]</th>
             <td :class="{'completed': task.Completed}">[[task.Task]]</td>
             <td :class="{'completed': task.Completed}">[[task.CreatedOn]]</td>
+            <td :class="{'completed': task.Completed}">[[task.Tags]]</td>
             <td>
                 <span @click.stop="openModal(index, 'modify')">
                     {% icon "edit" class="css_icon_edit close" %}

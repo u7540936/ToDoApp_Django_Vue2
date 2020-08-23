@@ -20,7 +20,17 @@
                         <input type="text" class="form-control" aria-label="Sizing example input"
                                aria-describedby="inputGroup-sizing-default" v-model="new_task">
                     </div>
+                    <!-- Vue component -->
+                    <template>
+                        <label class="typo__label">Tagging</label>
+                        <multiselect v-model="multiselect_value" tag-placeholder="Add this as new tag"
+                                     placeholder="Search or add a tag"
+                                     label="name" track-by="code" :options="options" :multiple="true" :taggable="true"
+                                     @tag="addTag"></multiselect>
+                        <pre class="language-json"><code>{{ value  }}</code></pre>
+                    </template>
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button class="btn btn-success">Save changes</button>

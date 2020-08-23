@@ -10,6 +10,7 @@ class TodoList(models.Model):
     CompletedOn = models.DateTimeField(blank=True, null=True)
     Deleted = models.BooleanField(default=False)
     DeletedOn = models.DateTimeField(blank=True, null=True)
+    Tags = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
         return self.Task
